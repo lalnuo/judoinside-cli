@@ -4,10 +4,11 @@ require 'open-uri'
 require 'nokogiri'
 
 def print_competitions(judoka_page)
+  printf("%-35s %s %s %s\n", 'Competition', 'G', 'S', 'B')
   competitions = judoka_page.css('.accord').map do |competition|
     name = competition.children.first.text
     medals = (1..3).map { |i| competition.children[i].text }
-    printf("%-35s %d %d %d\n", name, medals[0], medals[1], medals[2])
+    printf("%-35s %d %d %d\n", name, medals[2], medals[1], medals[0])
   end
 end
 
@@ -16,8 +17,8 @@ def print_judoka(judoka)
   country = judoka.css('#judokaUserDatas').css('li')[0].text.split(':').last
   age = judoka.css('#judokaUserDatas').css('li')[1].text.split(':').last
   puts "Name: #{name}
-  Born: #{age}
-  Country: #{country}"
+Born: #{age}
+Country: #{country}"
 
 end
 
@@ -30,4 +31,5 @@ end
 judoka_name = ARGV.join('+')
 judoka_page = judoka_page_for(judoka_name)
 print_judoka(judoka_page)
+puts ''
 print_competitions(judoka_page)
