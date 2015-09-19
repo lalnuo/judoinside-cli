@@ -2,6 +2,7 @@
 Fetches judoka information from judoinside and prints it
 
 ```
+Lallis-MacBook-Pro:judoka lallinuo$ judoka lalli
 Name: Lalli Nuorteva
 Born: 10 August 1993 (22 years)
 Country: Finland
